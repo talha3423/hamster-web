@@ -18,18 +18,48 @@
         color: white;
         border: none;
         border-radius: 5px;
-        padding: 10px 20px;
+        padding: 5px 10px;
         cursor: pointer;
   
+    }
+    .result-item{
+      background-color: rgba(255, 255, 255, 0.1);
+      
+      border-radius: 6px;
+      color: white;
+      width: full;
+      padding: 5px 7px;
+    }
+    .code-box{
+      background-color: rgba(255, 255, 255, 0.1);
+      
+      border-radius: 6px;
+      color: white;
+      width: full;
+      padding: 5px 7px;
+    }
+    .result-code{
+      display: flex;
+      flex-direction: row;
+      row-gap: 4px;
+      align-items: center;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
   </style>
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gray-100">
   <div class=" p-6 rounded-lg shadow-lg backdrop-blur-md max-w-lg w-full">
-    <h1 class="text-4xl font-semibold text-center text-blue-600 mb-6">Hamster Codes Generator</h1>
+    <div class="flex gap-x-3 py-3">
+      <img src='./hamster-coin.webp' class="w-16 ">
+      <h1 class="text-3xl font-semibold  mt-3 text-[#FCE86A]">Hamster Codes Generator</h1>
+    </div>
     <form id="genCodeForm" class="space-y-4">
       <div>
-        <label for="runTimes" class="block font-semibold text-gray-300">How many times (1-12):</label>
+        <label for="runTimes" class="block font-semibold text-gray-300">How many times (1-4):</label>
         <input type="number" id="runTimes" name="runTimes" min="1" max="4" value="4" required class="mt-1 block w-full p-2 border bg-white bg-opacity-10 rounded-md text-white active:ouline-none shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
       </div>
       <div>
@@ -44,7 +74,7 @@
       <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Get Keys </button>
     </form>
     
-    <div id="results" class="mt-6 space-y-4 text-white flex justify-between  gap-2 flex-col"></div>
+    <div id="results" class="mt-6 space-y-4 text-white flex justify-between text-sm  gap-2 flex-col"></div>
     <div id="" class=" text-white  my-6 ">
          <a href="http://t.me/talhariazc"><button class="text-xl text-black  font-semibold bg-[#24A1DE] px-3 py-2 rounded-md w-full">Telegram</button></a>
     </div>

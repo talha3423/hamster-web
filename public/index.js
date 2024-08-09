@@ -193,9 +193,10 @@ function runGenCode(inputValue, resultCodeElement, timerElement) {
      }
       resultCodeElement.textContent = ''
      const codeDiv =  document.createElement('div')
-     codeDiv.textContent = `Generated code: ${res}`;
+     codeDiv.classList.add('code-box')
+     codeDiv.textContent = `Code: ${res}`;
      const button = document.createElement('button');
-     button.innerText = 'Copy to clipboard';
+     button.innerText = 'Copy';
      button.addEventListener('click', () => {
        navigator.clipboard.writeText(res);
        button.textContent = 'Copied'
@@ -204,6 +205,6 @@ function runGenCode(inputValue, resultCodeElement, timerElement) {
     resultCodeElement.appendChild(codeDiv)
     resultCodeElement.appendChild(button)
     clearInterval(intervalId);
-    timerElement.textContent = 'Done!';
+    timerElement.textContent = '';
   });
 }
