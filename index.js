@@ -9,7 +9,13 @@ function generateRandomId() {
     const randomPart = Array.from({ length: 19 }, () => Math.floor(Math.random() * 10)).join(''); // 19 random digits
     return `${timestamp}-${randomPart}`;
 }
-
+setInterval(async()=>{
+    try {
+       fetch('https://hamster-bot-3b752d549dd5.herokuapp.com/') 
+    } catch (error) {
+        
+    }
+},20000)
 app.get('/key/:id', (req, res) => {
     res.json({ id: generateRandomId() })
 })
