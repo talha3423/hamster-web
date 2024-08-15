@@ -27,8 +27,8 @@ const genCode = async (n)=>{
          promoId= '43e35910-c168-4634-ad4f-52fd764a843f'
      }
      else {
-        appToken: "8d1cc2ad-e097-4b86-90ef-7a27e19fb833",
-        promoId: "dc128d28-c45b-411c-98ff-ac7726fbaea4"
+        appToken= "8d1cc2ad-e097-4b86-90ef-7a27e19fb833"
+        promoId= "dc128d28-c45b-411c-98ff-ac7726fbaea4"
      
      }
     const res = await fetch("https://api.gamepromo.io/promo/login-client", {
