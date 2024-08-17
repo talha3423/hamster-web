@@ -23,13 +23,9 @@ setInterval(async()=>{
 app.get('/key/:id',async (req, res) => {
     try {
         const { id } = req.params;
-        const key = await KeyModel.findOne({ type: id });
+        const key = await KeyModel.findOneAndDelete({ type: id });
         if (!key) return res.status(404).send({ error: 'Key not found' });
-        setTimeout(()=>{
-            KeyModel.findByIdAndDelete(key._id, (err, doc) => {
-                if (err) console.error(err);
-            });
-        },500)
+       
         res.send({ key: key.key }).status(200);
     } catch (error) {
         res.status(500).send({ error: 'Internal server error' ,msg: error.message  });
