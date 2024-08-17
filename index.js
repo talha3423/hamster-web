@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 require('dotenv').config();
 const port = process.env.PORT || 5000;
+const Connect = require('./mongo/connect');
 app.use(express.static('./public'))
+const KeyModel = require('./mongo/models/key');
 require('./lib/telegram')
 function generateRandomId() {
     const timestamp = Date.now(); // Current timestamp in milliseconds
@@ -16,9 +18,33 @@ setInterval(async()=>{
         
     }
 },20000)
-app.get('/key/:id', (req, res) => {
-    res.json({ id: generateRandomId() })
+
+
+app.get('/key/:id',async (req, res) => {
+    try {
+        const { id } = req.params;
+        const key = await KeyModel.findOne({ type: id });
+        if (!key) return res.status(404).send({ error: 'Key not found' });
+        setTimeout(()=>{
+            KeyModel.findByIdAndDelete(key._id, (err, doc) => {
+                if (err) console.error(err);
+            });
+        },500)
+        res.send({ key: key.key }).status(200);
+    } catch (error) {
+        res.status(500).send({ error: 'Internal server error' ,msg: error.message  });
+    }
 })
-app.listen(port ,()=>{
-    console.log('server running')
-})
+
+const start = async () => {
+    try {
+        await Connect()
+        require('./lib/code')
+        app.listen(port, () => {
+            console.log(`Server running at http://localhost:${port}`);
+        });
+    } catch (error) {
+        console.error('Error starting server:', error);
+    }
+};
+start()
