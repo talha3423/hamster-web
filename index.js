@@ -31,6 +31,8 @@ app.get('/key/:id',async (req, res) => {
         res.status(500).send({ error: 'Internal server error' ,msg: error.message  });
     }
 })
+
+
 app.get('/all', async (req, res) => {
   try {
     const keys = await KeyModel.find({});
