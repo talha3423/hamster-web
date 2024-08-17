@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Run genCode Function</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
     body {
       background-image: url('./bg.avif');
@@ -100,13 +100,25 @@
     </form>
     
     <div id="results" class="mt-6 space-y-4 text-white flex justify-between text-sm gap-2 flex-col"></div>
+    <div>
+      <div>
+        <button class="copy-button w-full" onclick="YourID()">Your Id</button>
+        <div class="showId text-white">
+  
+        </div>
+      </div> 
+  </div>
     <div id="" class="text-white my-6">
          <a href="http://t.me/talhariazc"><button class="text-xl text-black font-semibold bg-[#24A1DE] px-3 py-2 rounded-md w-full">Telegram</button></a>
     </div>
+  
   </div>
-
+  
+  <div>
+ 
+  </div>
   <!-- The Modal -->
-  <div id="myModal" class="modal flex">
+  <div id="myModal" class="modal flex ">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2 class="text-xl font-semibold mb-4">Subscribe to our Telegram Channel!</h2>
@@ -118,13 +130,15 @@
   <script>
     // Get the modal
     var modal = document.getElementById("myModal");
-
+    const YourID = ()=>{
+     document.querySelector('.showId').textContent = window.Telegram.WebApp.initDataUnsafe.user.id  
+    }
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
     // Show the modal when the page loads
     window.onload = function() {
-      modal.style.display = "flex";
+      modal.style.display = "none";
     }
 
     // When the user clicks on <span> (x), close the modal
@@ -138,6 +152,9 @@
         modal.style.display = "none";
       }
     }
+
+   
+  
   </script>
   <script src="index.js"></script>
 </body>
