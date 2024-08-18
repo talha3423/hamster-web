@@ -43,6 +43,15 @@ app.get('/all', async (req, res) => {
   }
     
 })
+app.get('/length', async (req, res) => {
+    try {
+        const keys = await KeyModel.find({});
+        res.send({length:keys.length}).status(200);
+
+    } catch (error) {
+        res.status(500).send({ error: 'Internal server error', msg: error.message });
+    }
+})
 const start = async () => {
     try {
         await Connect()
